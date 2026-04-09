@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Innovator Founder Visa - Route Visa</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; }
+        
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            position: relative;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.8rem; font-weight: bold; color: #fff; text-decoration: none; }
+        .logo span { color: #e94560; }
+        
+        nav ul { display: flex; list-style: none; gap: 35px; }
+        nav ul li a { color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav ul li a:hover { color: #e94560; }
+        
+        .menu-toggle { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+        
+        /* Half Page Layout */
+        .half-page-section { display: flex; min-height: calc(100vh - 70px); }
+        
+        /* Left Side - Content */
+        .content-side {
+            flex: 1;
+            padding: 50px 40px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .content-side h2 { font-size: 2.2rem; color: #333; margin-bottom: 20px; }
+        .content-side p { color: #666; line-height: 1.8; font-size: 1.05rem; }
+        
+        /* Right Side - Full Slider Display */
+        .ad-side {
+            flex: 1;
+            position: relative;
+            background: #222;
+            overflow: hidden;
+        }
+        
+        .slider-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: auto;
+        }
+        
+        .ad-slide-show {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ad-slide-show.active { opacity: 1; }
+        
+        .ad-slide-show img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+        
+        /* Navigation Arrows */
+        .ad-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border: none;
+            font-size: 1.4rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 15;
+        }
+        .ad-nav:hover { background: #e94560; }
+        .ad-prev { left: 15px; }
+        .ad-next { right: 15px; }
+        
+        /* Footer */
+        footer { background: #1a1a2e; color: #fff; padding: 25px 0; text-align: center; }
+        footer p { color: #888; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #1a1a2e; flex-direction: column; padding: 20px; gap: 15px; }
+            nav ul.show { display: flex; }
+            .half-page-section { flex-direction: column; }
+            .content-side { padding: 30px 20px; }
+            .ad-side { min-height: 50vh; }
+            .ad-nav { width: 40px; height: 40px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Route<span>Visa</span></a>
+            <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="half-page-section">
+        <div class="content-side">
+            <h2>Self-sponsorship through innovator founder Route Visa in the UK!</h2>
+            <p>We help entrepreneurs design, validate, and implement AI-driven systems across their entire business. From market analysis and MVP development to automation, growth strategy, and scaling—we build what founders need to operate efficiently and grow faster.</p>
+        </div>
+        
+        <div class="ad-side">
+            <div class="slider-container">
+                <div class="ad-slide-show active">
+                    <img src="1 (1).jpg">
+                </div>
+                <div class="ad-slide-show">
+                    <img src="1 (1).png">
+                </div>
+                <div class="ad-slide-show">
+                    <img src="1 (2).png">
+                </div>
+            </div>
+            
+            <button class="ad-nav ad-prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="ad-nav ad-next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 RouteVisa. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.ad-slide-show');
+        
+        function showSlide(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        function changeSlide(d) { showSlide(currentSlide + d); }
+        function toggleMenu() { document.getElementById('menu').classList.toggle('show'); }
+        
+        setInterval(() => changeSlide(1), 5000);
+    </script>
+</body>
+</html>
